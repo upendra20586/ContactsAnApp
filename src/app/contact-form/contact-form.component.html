@@ -1,0 +1,52 @@
+
+
+<div class="form-container">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          type="text"
+          class="form-control"
+          formControlName="firstName"
+          placeholder="Enter first name"
+        />
+        <div *ngIf="contactForm.get('firstName')?.invalid && contactForm.get('firstName')?.touched" class="error">
+          First name is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          id="lastName"
+          type="text"
+          class="form-control"
+          formControlName="lastName"
+          placeholder="Enter last name"
+        />
+        <div *ngIf="contactForm.get('lastName')?.invalid && contactForm.get('lastName')?.touched" class="error">
+          Last name is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter email"
+        />
+        <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error">
+          Enter a valid email.
+        </div>
+      </div>
+  
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="closeForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
